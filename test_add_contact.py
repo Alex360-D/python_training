@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 from selenium.webdriver.firefox.webdriver import WebDriver
 import unittest
 from contact import Contact
@@ -75,7 +76,7 @@ class test_add_contact(unittest.TestCase):
         wd.find_element_by_name("email3").send_keys(contact.email3)
         wd.find_element_by_name("homepage").click()
         wd.find_element_by_name("homepage").clear()
-        wd.find_element_by_name("homepage").send_keys("http://alexhomepage.ru")
+        wd.find_element_by_name("homepage").send_keys(contact.homepage)
         if not wd.find_element_by_xpath("//div[@id='content']/form/select[1]//option[5]").is_selected():
             wd.find_element_by_xpath("//div[@id='content']/form/select[1]//option[5]").click()
         if not wd.find_element_by_xpath("//div[@id='content']/form/select[2]//option[12]").is_selected():
@@ -98,7 +99,7 @@ class test_add_contact(unittest.TestCase):
     def logout(self, wd):
         wd.find_element_by_link_text("Logout").click()
 
-    def test_test_add_contact(self):
+    def test_add_contact(self):
         wd = self.wd
         self.open_home_page(wd)
         self.login(wd, username="admin", password="secret")
