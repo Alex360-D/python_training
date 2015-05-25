@@ -4,7 +4,6 @@ import pytest
 from model.contact import Contact
 from fixture.application_contact import ApplicationContact
 
-
 @pytest.fixture
 def app(request):
     fixture = ApplicationContact()
