@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# session.py используется и для групп, и для контактов
 
 class SessionHelper:
 
