@@ -15,6 +15,7 @@ class ContactHelper:
 
     def add(self, contact):
         wd = self.app.wd
+        self.app.open_home_page()
         # Выбираем "Add new"
         wd.find_element_by_link_text("add new").click()
         # Заполняем поля
@@ -46,6 +47,7 @@ class ContactHelper:
 
     def modify_first_contact(self, contact):
         wd = self.app.wd
+        self.app.open_home_page()
         # Нажимаем по значку редактирования контакта
         wd.find_element_by_css_selector("img[alt=\"Edit\"]").click()
         # Заполняем поля
@@ -77,6 +79,7 @@ class ContactHelper:
 
     def delete_first_contact(self):
         wd = self.app.wd
+        self.app.open_home_page()
         # Выбраем контакт
         wd.find_element_by_name("selected[]").click()
         # Нажимаем по кнопке для удаления
