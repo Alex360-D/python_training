@@ -6,10 +6,12 @@ class ContactHelper:
         self.app = app
 
     # Часто повторяющаяся группа "click() clear() send_keys()" вынесены в отдельный метод setvalue
-    def setvalue(self, value, contact):
-        self.app.wd.find_element_by_name(value).click()
-        self.app.wd.find_element_by_name(value).clear()
-        self.app.wd.find_element_by_name(value).send_keys(contact)
+    def setvalue(self, value, text):
+        wd = self.app.wd
+        if text is not None:
+            wd.find_element_by_name(value).click()
+            wd.find_element_by_name(value).clear()
+            wd.find_element_by_name(value).send_keys(text)
 
     def add(self, contact):
         wd = self.app.wd
