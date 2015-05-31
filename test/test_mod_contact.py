@@ -3,10 +3,14 @@
 from model.contact import Contact
 
 def test_modify_first_contact_firstname(app):
+    if app.contact.count() == 0:
+        app.contact.add(Contact(firstname="test_contact"))
     app.contact.modify_first_contact(Contact(firstname="Alexander_modif"))
 
 
 def test_modify_first_contact(app):
+    if app.contact.count() == 0:
+        app.contact.add(Contact(firstname="test_contact"))
     app.contact.modify_first_contact(Contact(firstname="Alexander_mod", middlename="Alex_mod", lastname="Paderin_mod", nickname="Alex360_mod",
                                      title="Alex-title_mod", company="Alex Company_mod", address="Russia, Moscow City, 11_mod",
                                      home="+7(495)111-11-11_mod", mobile="+7(495)222-22-22_mod", work="+7(495)333-33-33_mod", fax="+7(495)444-44-44_mod",
