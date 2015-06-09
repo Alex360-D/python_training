@@ -48,11 +48,14 @@ class ContactHelper:
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
         self.contact_cache = None
 
-    def modify_first_contact(self, contact):
+    def modify_first_contact(self):
+        self.modify_contact_by_index(0)
+
+    def modify_contact_by_index(self, index, contact):
         wd = self.app.wd
         self.app.open_home_page()
         # Нажимаем по значку редактирования контакта
-        wd.find_element_by_css_selector("img[alt=\"Edit\"]").click()
+        wd.find_elements_by_css_selector("img[alt=\"Edit\"]")[index].click()
         # Заполняем поля
         self.setvalue("firstname", contact.firstname)
         self.setvalue("middlename", contact.middlename)
@@ -82,10 +85,13 @@ class ContactHelper:
         self.contact_cache = None
 
     def delete_first_contact(self):
+        self.delete_contact_by_index(0)
+
+    def delete_contact_by_index(self, index):
         wd = self.app.wd
         self.app.open_home_page()
         # Выбраем контакт
-        wd.find_element_by_name("selected[]").click()
+        wd.find_elements_by_name("selected[]")[index].click()
         # Нажимаем по кнопке для удаления
         wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
         # Подтверждаем удаление
