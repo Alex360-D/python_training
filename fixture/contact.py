@@ -55,7 +55,7 @@ class ContactHelper:
         wd = self.app.wd
         self.app.open_home_page()
         # Нажимаем по значку редактирования контакта
-        wd.find_elements_by_css_selector("img[alt=\"Edit\"]")[index].click()
+        wd.find_elements_by_css_selector('img[alt="Edit"]')[index].click()
         # Заполняем поля
         self.setvalue("firstname", contact.firstname)
         self.setvalue("middlename", contact.middlename)
