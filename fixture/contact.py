@@ -99,6 +99,17 @@ class ContactHelper:
         wd.switch_to_alert().accept()
         self.contact_cache = None
 
+    def delete_contact_by_id(self, id):
+        wd = self.app.wd
+        self.app.open_home_page()
+        # Выбраем контакт
+        wd.find_element_by_css_selector("input[id='%s']" % id).click()
+        # Нажимаем по кнопке для удаления
+        wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
+        # Подтверждаем удаление
+        wd.switch_to_alert().accept()
+        self.contact_cache = None
+
     def count(self):
         wd = self.app.wd
         self.app.open_home_page()
