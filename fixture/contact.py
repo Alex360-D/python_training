@@ -89,15 +89,7 @@ class ContactHelper:
         wd = self.app.wd
         self.app.open_home_page()
         # Нажимаем по значку редактирования контакта
-        #wd.find_element_by_xpath("//input[contains(@value,'Delete')]").click()
         wd.find_element_by_css_selector('a[href="edit.php?id=%s"]' % id).click()
-        # wd.find_element_by_xpath("//a[contains(@href=edit.php?id, '%s')]" % id).click()
-        # wd.find_element_by_id("%s" % id).find_element_by_css_selector('img[alt="Edit"]').click()
-        # a = wd.find_elements_by_id("%s" % id)
-        # wd.find_elements_by_id("%s" % id).find_element_by_css_selector('img[alt="Edit"]').click()
-        # wd.find_element_by_css_selector("input[value='%s']" % id)
-        # wd.find_element_by_css_selector("input[value='%s']" % id).click()
-        # wd.find_elements_by_css_selector('img[alt="Edit"]')[index].click()
         # Заполняем поля
         self.setvalue("firstname", contact.firstname)
         self.setvalue("middlename", contact.middlename)
