@@ -9,6 +9,7 @@ def test_delete_some_contact(app, db):
     old_contacts = db.get_contact_list()
     contact = random.choice(old_contacts)
     app.contact.delete_contact_by_id(contact.id)
+    app.wd.implicitly_wait(5)
     new_contacts = db.get_contact_list()
     assert len(old_contacts) - 1 == len(new_contacts)
     old_contacts.remove(contact)

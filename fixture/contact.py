@@ -85,6 +85,47 @@ class ContactHelper:
         wd.find_element_by_name("update").click()
         self.contact_cache = None
 
+    def modify_contact_by_id(self, id, contact):
+        wd = self.app.wd
+        self.app.open_home_page()
+        # Нажимаем по значку редактирования контакта
+        #wd.find_element_by_xpath("//input[contains(@value,'Delete')]").click()
+        wd.find_element_by_css_selector('a[href="edit.php?id=%s"]' % id).click()
+        # wd.find_element_by_xpath("//a[contains(@href=edit.php?id, '%s')]" % id).click()
+        # wd.find_element_by_id("%s" % id).find_element_by_css_selector('img[alt="Edit"]').click()
+        # a = wd.find_elements_by_id("%s" % id)
+        # wd.find_elements_by_id("%s" % id).find_element_by_css_selector('img[alt="Edit"]').click()
+        # wd.find_element_by_css_selector("input[value='%s']" % id)
+        # wd.find_element_by_css_selector("input[value='%s']" % id).click()
+        # wd.find_elements_by_css_selector('img[alt="Edit"]')[index].click()
+        # Заполняем поля
+        self.setvalue("firstname", contact.firstname)
+        self.setvalue("middlename", contact.middlename)
+        self.setvalue("lastname", contact.lastname)
+        self.setvalue("nickname", contact.nickname)
+        self.setvalue("title", contact.title)
+        self.setvalue("company", contact.company)
+        self.setvalue("address", contact.address)
+        self.setvalue("home", contact.home)
+        self.setvalue("mobile", contact.mobile)
+        self.setvalue("work", contact.work)
+        self.setvalue("fax", contact.fax)
+        self.setvalue("email", contact.email)
+        self.setvalue("email2", contact.email2)
+        self.setvalue("email3", contact.email3)
+        self.setvalue("homepage", contact.homepage)
+        if not wd.find_element_by_xpath("//div[@id='content']/form/select[1]//option[5]").is_selected():
+            wd.find_element_by_xpath("//div[@id='content']/form/select[1]//option[5]").click()
+        if not wd.find_element_by_xpath("//div[@id='content']/form/select[2]//option[12]").is_selected():
+            wd.find_element_by_xpath("//div[@id='content']/form/select[2]//option[12]").click()
+        self.setvalue("byear", contact.byear)
+        self.setvalue("address2", contact.address2)
+        self.setvalue("phone2", contact.phone2)
+        self.setvalue("notes", contact.notes)
+        # Нажимаем кнопку "Update"
+        wd.find_element_by_name("update").click()
+        self.contact_cache = None
+
     def delete_first_contact(self):
         self.delete_contact_by_index(0)
 
@@ -103,7 +144,7 @@ class ContactHelper:
         wd = self.app.wd
         self.app.open_home_page()
         # Выбраем контакт
-        wd.find_element_by_css_selector("input[id='%s']" % id).click()
+        wd.find_element_by_css_selector("input[value='%s']" % id).click()
         # Нажимаем по кнопке для удаления
         wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
         # Подтверждаем удаление
