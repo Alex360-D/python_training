@@ -8,6 +8,12 @@ def test_contacts_on_home_page(app, db):
         app.contact.add(Contact(firstname="test_contact"))
     list_contacts_from_home_page = app.contact.get_contact_list()
     list_contacts_db = db.get_contact_list()
+    def clean(contact):
+        return Contact(id = contact.id, firstname = contact.firstname, lastname = contact.lastname, address = contact.address,
+                       all_phones_from_home_page = merge_phones_like_on_home_page(contact),
+                       all_emails_from_home_page = merge_emails_like_on_home_page(contact))
+    list_contacts_db = map(clean, db.get_contact_list())
+
     assert sorted(list_contacts_from_home_page, key=Contact.id_or_max) == sorted(list_contacts_db, key=Contact.id_or_max)
 
 
