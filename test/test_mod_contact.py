@@ -3,6 +3,7 @@
 from model.contact import Contact
 from random import randrange
 
+
 def test_modify_some_contact(app, db, check_ui):
     if len(db.get_contact_list()) == 0:
         app.contact.add(Contact(firstname="test_contact"))
