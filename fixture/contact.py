@@ -2,6 +2,7 @@
 
 from model.contact import Contact
 import re
+from selenium.webdriver.support.ui import Select # select_by_visible_text in select.py
 
 class ContactHelper:
 
@@ -203,3 +204,15 @@ class ContactHelper:
         work = re.search("W: (.*)", text).group(1)
         phone2 = re.search("P: (.*)", text).group(1)
         return Contact(home = home, mobile = mobile, work = work, phone2 = phone2)
+
+    def move_contact_in_group(self, contact_id, group_name):
+        wd = self.app.wd
+        self.app.open_home_page()
+        # Выбраем контакт
+        wd.find_element_by_css_selector("input[value='%s']" % contact_id).click()
+        # Выбираем из списка группу (подключаем select.py)
+        Select(wd.find_element_by_name("to_group")).select_by_visible_text(group_name)
+        # Нажимаем по кнопке "Add to"
+        wd.find_element_by_css_selector('input[value="Add to"]').click()
+        # Переходим на главную страницу
+        self.app.open_home_page()
