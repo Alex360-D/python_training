@@ -7,24 +7,18 @@ def test_contacts_on_home_page(app, db):
     if len(db.get_contact_list()) == 0:
         app.contact.add(Contact(firstname="test_contact"))
     list_contacts_from_home_page = app.contact.get_contact_list()
-    list_contacts_db = db.get_contact_list()
     def clean(contact):
-        return Contact(id = contact.id, firstname = contact.firstname, lastname = contact.lastname, address = contact.address,
-                       all_phones_from_home_page = merge_phones_like_on_home_page(contact),
-                       all_emails_from_home_page = merge_emails_like_on_home_page(contact))
-    list_contacts_db = map(clean, db.get_contact_list())
-
+        return Contact(id = contact.id,
+                       firstname = re.sub("[ ]{2,}", " ", (contact.firstname).strip()),
+                       lastname = re.sub("[ ]{2,}", " ", (contact.lastname).strip()),
+                       address = re.sub("[ ]{2,}", " ", (contact.address).strip()),
+                       all_emails_from_home_page = re.sub("[ ]{2,}", " ", (merge_emails_like_on_home_page(contact)).strip()),
+                       all_phones_from_home_page = re.sub("[ ]{1,}", "", (merge_phones_like_on_home_page(contact)).strip()))
+    list_contacts_db = list(map(clean, db.get_contact_list()))
     assert sorted(list_contacts_from_home_page, key=Contact.id_or_max) == sorted(list_contacts_db, key=Contact.id_or_max)
 
-
-    # assert contact_from_home_page.lastname == contact_from_edit_page.lastname
-    # assert contact_from_home_page.firstname == contact_from_edit_page.firstname
-    # assert contact_from_home_page.address == contact_from_edit_page.address
-    # assert contact_from_home_page.all_emails_from_home_page == merge_emails_like_on_home_page(contact_from_edit_page)
-    # assert contact_from_home_page.all_phones_from_home_page == merge_phones_like_on_home_page(contact_from_edit_page)
-
 def clear(s):
-    return re.sub("[() -]", "", s)
+    return re.sub("[()-]", "", s)
 
 def merge_emails_like_on_home_page(contact):
     return "\n".join(filter(lambda x: x != "",

@@ -41,6 +41,28 @@ class Contact:
                and (self.all_emails_from_home_page == other.all_emails_from_home_page)\
                and (self.all_phones_from_home_page == other.all_phones_from_home_page)
 
+    # Более информационный __eq__!!!
+    def __eq1__(self, other):
+        if not (self.id is None or other.id is None or self.id == other.id):
+            print("ID не равны")
+            return False
+        if self.lastname != other.lastname:
+            print(self.lastname + "!=" + other.lastname)
+            return False
+        if self.firstname != other.firstname:
+            print(self.firstname + "!=" + other.firstname)
+            return False
+        if self.address != other.address:
+            print(self.address + "!=" + other.address)
+            return False
+        if self.all_emails_from_home_page != other.all_emails_from_home_page:
+            print(self.all_emails_from_home_page + "!=" + other.all_emails_from_home_page)
+            return False
+        if self.all_phones_from_home_page != other.all_phones_from_home_page:
+            print(self.all_phones_from_home_page + "!=" + other.all_phones_from_home_page)
+            return False
+        return True
+
     def id_or_max(self):
         if self.id:
             return int(self.id)
