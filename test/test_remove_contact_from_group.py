@@ -12,8 +12,8 @@ def test_remove_contact_from_group(app, orm):
     list_groups = orm.get_group_list()
     # Выбираем одну случайную группу
     group = random.choice(list_groups)
-    a = len(orm.get_contacts_in_group(group))
     # Проверяем группу на наличие у неё контактов
+    a = len(orm.get_contacts_in_group(group))
     if len(orm.get_contacts_in_group(group)) == 0:
         # Добавляем контакт в группу, но предварительно проверяем, есть ли вообще контакты
         # Если нет контактов, то создаем один контакт
@@ -30,8 +30,6 @@ def test_remove_contact_from_group(app, orm):
     contact = random.choice(list_contacts)
     # Удаляем контакт из группы
     app.contact.remove_contact_from_group(contact.id, group.name)
-
     # Проверяем, что контакта в группе нет
-    #######################
     contact_in_group = orm.get_contacts_in_group(sorted(orm.get_group_list_by_name(Group(name=group.name)), key=Group.id_or_max)[0])
-    assert contact_in_group[0] != contact
+    assert contact not in contact_in_group

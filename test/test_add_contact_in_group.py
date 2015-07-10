@@ -23,4 +23,4 @@ def test_add_contact_in_group(app, orm):
     app.contact.move_contact_in_group(contact.id, group.name)
     # Проверяем, что контакт находится в указанной группе
     contact_in_group = orm.get_contacts_in_group(sorted(orm.get_group_list_by_name(Group(name=group.name)), key=Group.id_or_max)[0])
-    assert contact_in_group[0] == contact
+    assert contact in contact_in_group

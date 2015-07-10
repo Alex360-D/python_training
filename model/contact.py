@@ -44,7 +44,7 @@ class Contact:
     # Более информационный __eq__!!!
     def __eq1__(self, other):
         if not (self.id is None or other.id is None or self.id == other.id):
-            print("ID не равны")
+            print("ID")
             return False
         if self.lastname != other.lastname:
             print(self.lastname + "!=" + other.lastname)
