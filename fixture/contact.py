@@ -210,7 +210,7 @@ class ContactHelper:
         self.app.open_home_page()
         # Выбраем контакт
         wd.find_element_by_css_selector("input[value='%s']" % contact_id).click()
-        # Выбираем из списка группу (подключаем select.py)
+        # Выбираем из списка группу (подключили select.py)
         Select(wd.find_element_by_name("to_group")).select_by_visible_text(group_name)
         # Нажимаем по кнопке "Add to"
         wd.find_element_by_css_selector('input[value="Add to"]').click()
