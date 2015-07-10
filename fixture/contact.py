@@ -216,3 +216,17 @@ class ContactHelper:
         wd.find_element_by_css_selector('input[value="Add to"]').click()
         # Переходим на главную страницу
         self.app.open_home_page()
+        self.contact_cache = None
+
+    def remove_contact_from_group(self, contact_id, group_name):
+        wd = self.app.wd
+        self.app.open_home_page()
+        # Выбираем из списка группу
+        Select(wd.find_element_by_name("group")).select_by_visible_text(group_name)
+        # Выбраем контакт
+        wd.find_element_by_css_selector("input[value='%s']" % contact_id).click()
+        # Нажимаем по кнопке "Remove from..."
+        wd.find_element_by_name("remove").click()
+        # Переходим на главную страницу
+        self.app.open_home_page()
+        self.contact_cache = None
