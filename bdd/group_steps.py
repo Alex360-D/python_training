@@ -4,7 +4,7 @@ from pytest_bdd import given, when, then
 from model.group import Group
 import random
 
-# Add
+# Add group
 @given('a group list')
 def group_list(db):
     return db.get_group_list()
@@ -26,9 +26,7 @@ def verify_group_added(db, group_list, new_group, app, check_ui):
     if check_ui:
         assert sorted(new_groups, key=Group.id_or_max) == sorted(app.group.get_group_list(), key=Group.id_or_max)
 
-
-# Delete
-
+# Delete group
 @given('a non-empty group list')
 def non_empty_group_list(db, app):
     if len(db.get_group_list()) == 0:
@@ -53,8 +51,7 @@ def verify_group_deleted(db, non_empty_group_list, random_group, app, check_ui):
     if check_ui:
         assert sorted(new_groups, key=Group.id_or_max) == sorted(app.group.get_group_list(), key=Group.id_or_max)
 
-# Modify
-
+# Modify group
 # @given('a non-empty group list')
 # def non_empty_group_list(db, app):
 #     if len(db.get_group_list()) == 0:
