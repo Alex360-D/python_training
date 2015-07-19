@@ -2,12 +2,13 @@
 
 from model.contact import Contact
 from random import randrange
-
+import pytest
 
 def test_modify_some_contact(app, db, check_ui):
-    if len(db.get_contact_list()) == 0:
-        app.contact.add(Contact(firstname="test_contact"))
-    old_contacts = db.get_contact_list()
+    with pytest.allure.step('Given a contact list'):
+        if len(db.get_contact_list()) == 0:
+            app.contact.add(Contact(firstname="test_contact"))
+        old_contacts = db.get_contact_list()
     index = randrange(len(old_contacts))
     contact = Contact(firstname="Alexander_mod", middlename="Alex_mod", lastname="Paderin_mod", nickname="Alex360_mod",
                       title="Alex-title_mod", company="Alex Company_mod", address="Russia, Moscow City, 11_mod",
@@ -16,9 +17,12 @@ def test_modify_some_contact(app, db, check_ui):
                       email3="alex3@alex.ru_mod", homepage="http://alexhomepage.ru_mod", byear="1985",
                       address2="Russia, Moscow City, 15_mod", phone2="5555_mod", notes="simple notes_mod")
     contact.id = old_contacts[index].id
-    app.contact.modify_contact_by_id(contact.id, contact)
-    new_contacts = db.get_contact_list()
-    old_contacts[index] = contact
-    assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
+    with pytest.allure.step('When I modify the contact %s in the list' % contact):
+        app.contact.modify_contact_by_id(contact.id, contact)
+    with pytest.allure.step('Then the new contact list is equal to the old list with the modified contact'):
+        new_contacts = db.get_contact_list()
+        old_contacts[index] = contact
+        assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
     if check_ui:
-        assert sorted(new_contacts, key=Contact.id_or_max) == sorted(app.contact.get_contact_list(), key=Contact.id_or_max)
+        with pytest.allure.step('Also check UI'):
+            assert sorted(new_contacts, key=Contact.id_or_max) == sorted(app.contact.get_contact_list(), key=Contact.id_or_max)
