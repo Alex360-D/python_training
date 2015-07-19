@@ -17,7 +17,7 @@ def test_modify_some_contact(app, db, check_ui):
                       email3="alex3@alex.ru_mod", homepage="http://alexhomepage.ru_mod", byear="1985",
                       address2="Russia, Moscow City, 15_mod", phone2="5555_mod", notes="simple notes_mod")
     contact.id = old_contacts[index].id
-    with pytest.allure.step('When I modify the contact %s in the list' % contact):
+    with pytest.allure.step('When I modify the contact with id=%s in the list' % contact.id):
         app.contact.modify_contact_by_id(contact.id, contact)
     with pytest.allure.step('Then the new contact list is equal to the old list with the modified contact'):
         new_contacts = db.get_contact_list()

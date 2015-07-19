@@ -12,7 +12,7 @@ def test_modify_some_group_name(app, db, check_ui):
     index = randrange(len(old_groups))
     group = Group(name="aaaa_mod")
     group.id = old_groups[index].id
-    with pytest.allure.step('When I modify the group %s in the list' % group):
+    with pytest.allure.step('When I modify the group with id=%s in the list' % group.id):
         app.group.modify_group_by_id(group.id, group)
     with pytest.allure.step('Then the new group list is equal to the old list with the modified group'):
         new_groups = db.get_group_list()
