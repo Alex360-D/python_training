@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20150720 22:38:24.872" generator="Robot 2.8.7 (Python 3.4.3 on win32)">
+<suite name="Group Scenarios" source="C:\Devel\python_training\rf\group_scenarios.robot" id="s1">
+<kw type="setup" name="rf.AddressBook.Init Fixtures">
+<doc></doc>
+<arguments>
+</arguments>
+<status status="PASS" starttime="20150720 22:38:25.156" endtime="20150720 22:38:30.016"></status>
+</kw>
+<test name="Add new group" id="s1-t1">
+<kw type="kw" name="${old_list} = rf.AddressBook.Get Group List">
+<doc></doc>
+<arguments>
+</arguments>
+<msg timestamp="20150720 22:38:30.025" level="INFO">${old_list} = [128:name_mod:header_mod:footer_mod, 129:name_mod:header_mod:footer_mod, 131:name,:header7:footerBjR$(eM-cF+J3Lku]Y, 132:nameD}x.S:headerTH6LY5|Bt:footer  , 134:nameT :header^g#^6f;[( /vT:footer ?, 13...</msg>
+<status status="PASS" starttime="20150720 22:38:30.018" endtime="20150720 22:38:30.024"></status>
+</kw>
+<kw type="kw" name="${group} = rf.AddressBook.New Group">
+<doc></doc>
+<arguments>
+<arg>name1</arg>
+<arg>header1</arg>
+<arg>footer1</arg>
+</arguments>
+<msg timestamp="20150720 22:38:30.027" level="INFO">${group} = None:name1:header1:footer1</msg>
+<status status="PASS" starttime="20150720 22:38:30.026" endtime="20150720 22:38:30.027"></status>
+</kw>
+<kw type="kw" name="rf.AddressBook.Create Group">
+<doc></doc>
+<arguments>
+<arg>${group}</arg>
+</arguments>
+<status status="PASS" starttime="20150720 22:38:30.028" endtime="20150720 22:38:31.214"></status>
+</kw>
+<kw type="kw" name="${new_list} = rf.AddressBook.Get Group List">
+<doc></doc>
+<arguments>
+</arguments>
+<msg timestamp="20150720 22:38:31.222" level="INFO">${new_list} = [128:name_mod:header_mod:footer_mod, 129:name_mod:header_mod:footer_mod, 131:name,:header7:footerBjR$(eM-cF+J3Lku]Y, 132:nameD}x.S:headerTH6LY5|Bt:footer  , 134:nameT :header^g#^6f;[( /vT:footer ?, 13...</msg>
+<status status="PASS" starttime="20150720 22:38:31.215" endtime="20150720 22:38:31.222"></status>
+</kw>
+<kw type="kw" name="Collections.Append To List">
+<doc>Adds `values` to the end of `list`.</doc>
+<arguments>
+<arg>${old_list}</arg>
+<arg>${group}</arg>
+</arguments>
+<status status="PASS" starttime="20150720 22:38:31.223" endtime="20150720 22:38:31.224"></status>
+</kw>
+<kw type="kw" name="rf.AddressBook.Group Lists Should Be Equal">
+<doc></doc>
+<arguments>
+<arg>${new_list}</arg>
+<arg>${old_list}</arg>
+</arguments>
+<status status="PASS" starttime="20150720 22:38:31.225" endtime="20150720 22:38:31.226"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status status="PASS" critical="yes" starttime="20150720 22:38:30.016" endtime="20150720 22:38:31.227"></status>
+</test>
+<test name="Delete group" id="s1-t2">
+<kw type="kw" name="${old_list} = rf.AddressBook.Get Group List">
+<doc></doc>
+<arguments>
+</arguments>
+<msg timestamp="20150720 22:38:31.236" level="INFO">${old_list} = [128:name_mod:header_mod:footer_mod, 129:name_mod:header_mod:footer_mod, 131:name,:header7:footerBjR$(eM-cF+J3Lku]Y, 132:nameD}x.S:headerTH6LY5|Bt:footer  , 134:nameT :header^g#^6f;[( /vT:footer ?, 13...</msg>
+<status status="PASS" starttime="20150720 22:38:31.229" endtime="20150720 22:38:31.235"></status>
+</kw>
+<kw type="kw" name="${len} = BuiltIn.Get Length">
+<doc>Returns and logs the length of the given item.</doc>
+<arguments>
+<arg>${old_list}</arg>
+</arguments>
+<msg timestamp="20150720 22:38:31.237" level="INFO">Length is 74</msg>
+<msg timestamp="20150720 22:38:31.237" level="INFO">${len} = 74</msg>
+<status status="PASS" starttime="20150720 22:38:31.236" endtime="20150720 22:38:31.237"></status>
+</kw>
+<kw type="kw" name="${index} = BuiltIn.Evaluate">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>random.randrange(${len})</arg>
+<arg>random</arg>
+</arguments>
+<msg timestamp="20150720 22:38:31.238" level="INFO">${index} = 63</msg>
+<status status="PASS" starttime="20150720 22:38:31.237" endtime="20150720 22:38:31.238"></status>
+</kw>
+<kw type="kw" name="${group} = Collections.Get From List">
+<doc>Returns the value specified with an `index` from `list`.</doc>
+<arguments>
+<arg>${old_list}</arg>
+<arg>${index}</arg>
+</arguments>
+<msg timestamp="20150720 22:38:31.239" level="INFO">${group} = 206:nameT :header^g#^6f;[( /vT:footer ?</msg>
+<status status="PASS" starttime="20150720 22:38:31.238" endtime="20150720 22:38:31.239"></status>
+</kw>
+<kw type="kw" name="rf.AddressBook.Delete Group">
+<doc></doc>
+<arguments>
+<arg>${group}</arg>
+</arguments>
+<status status="PASS" starttime="20150720 22:38:31.240" endtime="20150720 22:38:31.695"></status>
+</kw>
+<kw type="kw" name="${new_list} = rf.AddressBook.Get Group List">
+<doc></doc>
+<arguments>
+</arguments>
+<msg timestamp="20150720 22:38:31.703" level="INFO">${new_list} = [128:name_mod:header_mod:footer_mod, 129:name_mod:header_mod:footer_mod, 131:name,:header7:footerBjR$(eM-cF+J3Lku]Y, 132:nameD}x.S:headerTH6LY5|Bt:footer  , 134:nameT :header^g#^6f;[( /vT:footer ?, 13...</msg>
+<status status="PASS" starttime="20150720 22:38:31.695" endtime="20150720 22:38:31.703"></status>
+</kw>
+<kw type="kw" name="Collections.Remove Values From List">
+<doc>Removes all occurences of given `values` from `list`.</doc>
+<arguments>
+<arg>${old_list}</arg>
+<arg>${group}</arg>
+</arguments>
+<status status="PASS" starttime="20150720 22:38:31.704" endtime="20150720 22:38:31.704"></status>
+</kw>
+<kw type="kw" name="rf.AddressBook.Group Lists Should Be Equal">
+<doc></doc>
+<arguments>
+<arg>${new_list}</arg>
+<arg>${old_list}</arg>
+</arguments>
+<status status="PASS" starttime="20150720 22:38:31.705" endtime="20150720 22:38:31.705"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status status="PASS" critical="yes" starttime="20150720 22:38:31.228" endtime="20150720 22:38:31.706"></status>
+</test>
+<kw type="teardown" name="rf.AddressBook.Destroy Fixtures">
+<doc></doc>
+<arguments>
+</arguments>
+<status status="PASS" starttime="20150720 22:38:31.708" endtime="20150720 22:38:32.936"></status>
+</kw>
+<doc></doc>
+<metadata>
+</metadata>
+<status status="PASS" starttime="20150720 22:38:24.873" endtime="20150720 22:38:32.937"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0">Critical Tests</stat>
+<stat pass="2" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" name="Group Scenarios" fail="0" id="s1">Group Scenarios</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
