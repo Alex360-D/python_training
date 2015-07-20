@@ -1,155 +1,227 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generated="20150720 22:38:24.872" generator="Robot 2.8.7 (Python 3.4.3 on win32)">
-<suite name="Group Scenarios" source="C:\Devel\python_training\rf\group_scenarios.robot" id="s1">
-<kw type="setup" name="rf.AddressBook.Init Fixtures">
+<robot generator="Robot 2.8.7 (Python 3.4.3 on win32)" generated="20150720 23:04:32.657">
+<suite name="Group Scenarios" id="s1" source="C:\Devel\python_training\rf\group_scenarios.robot">
+<kw name="rf.AddressBook.Init Fixtures" type="setup">
 <doc></doc>
 <arguments>
 </arguments>
-<status status="PASS" starttime="20150720 22:38:25.156" endtime="20150720 22:38:30.016"></status>
+<status status="PASS" starttime="20150720 23:04:32.938" endtime="20150720 23:04:37.679"></status>
 </kw>
 <test name="Add new group" id="s1-t1">
-<kw type="kw" name="${old_list} = rf.AddressBook.Get Group List">
+<kw name="${old_list} = rf.AddressBook.Get Group List" type="kw">
 <doc></doc>
 <arguments>
 </arguments>
-<msg timestamp="20150720 22:38:30.025" level="INFO">${old_list} = [128:name_mod:header_mod:footer_mod, 129:name_mod:header_mod:footer_mod, 131:name,:header7:footerBjR$(eM-cF+J3Lku]Y, 132:nameD}x.S:headerTH6LY5|Bt:footer  , 134:nameT :header^g#^6f;[( /vT:footer ?, 13...</msg>
-<status status="PASS" starttime="20150720 22:38:30.018" endtime="20150720 22:38:30.024"></status>
+<msg level="INFO" timestamp="20150720 23:04:37.690">${old_list} = [128:name_mod:header_mod:footer_mod, 129:name_mod:header_mod:footer_mod, 131:name,:header7:footerBjR$(eM-cF+J3Lku]Y, 132:nameD}x.S:headerTH6LY5|Bt:footer  , 134:nameT :header^g#^6f;[( /vT:footer ?, 13...</msg>
+<status status="PASS" starttime="20150720 23:04:37.682" endtime="20150720 23:04:37.690"></status>
 </kw>
-<kw type="kw" name="${group} = rf.AddressBook.New Group">
+<kw name="${group} = rf.AddressBook.New Group" type="kw">
 <doc></doc>
 <arguments>
 <arg>name1</arg>
 <arg>header1</arg>
 <arg>footer1</arg>
 </arguments>
-<msg timestamp="20150720 22:38:30.027" level="INFO">${group} = None:name1:header1:footer1</msg>
-<status status="PASS" starttime="20150720 22:38:30.026" endtime="20150720 22:38:30.027"></status>
+<msg level="INFO" timestamp="20150720 23:04:37.691">${group} = None:name1:header1:footer1</msg>
+<status status="PASS" starttime="20150720 23:04:37.691" endtime="20150720 23:04:37.691"></status>
 </kw>
-<kw type="kw" name="rf.AddressBook.Create Group">
+<kw name="rf.AddressBook.Create Group" type="kw">
 <doc></doc>
 <arguments>
 <arg>${group}</arg>
 </arguments>
-<status status="PASS" starttime="20150720 22:38:30.028" endtime="20150720 22:38:31.214"></status>
+<status status="PASS" starttime="20150720 23:04:37.692" endtime="20150720 23:04:38.944"></status>
 </kw>
-<kw type="kw" name="${new_list} = rf.AddressBook.Get Group List">
+<kw name="${new_list} = rf.AddressBook.Get Group List" type="kw">
 <doc></doc>
 <arguments>
 </arguments>
-<msg timestamp="20150720 22:38:31.222" level="INFO">${new_list} = [128:name_mod:header_mod:footer_mod, 129:name_mod:header_mod:footer_mod, 131:name,:header7:footerBjR$(eM-cF+J3Lku]Y, 132:nameD}x.S:headerTH6LY5|Bt:footer  , 134:nameT :header^g#^6f;[( /vT:footer ?, 13...</msg>
-<status status="PASS" starttime="20150720 22:38:31.215" endtime="20150720 22:38:31.222"></status>
+<msg level="INFO" timestamp="20150720 23:04:38.953">${new_list} = [128:name_mod:header_mod:footer_mod, 129:name_mod:header_mod:footer_mod, 131:name,:header7:footerBjR$(eM-cF+J3Lku]Y, 132:nameD}x.S:headerTH6LY5|Bt:footer  , 134:nameT :header^g#^6f;[( /vT:footer ?, 13...</msg>
+<status status="PASS" starttime="20150720 23:04:38.945" endtime="20150720 23:04:38.953"></status>
 </kw>
-<kw type="kw" name="Collections.Append To List">
+<kw name="Collections.Append To List" type="kw">
 <doc>Adds `values` to the end of `list`.</doc>
 <arguments>
 <arg>${old_list}</arg>
 <arg>${group}</arg>
 </arguments>
-<status status="PASS" starttime="20150720 22:38:31.223" endtime="20150720 22:38:31.224"></status>
+<status status="PASS" starttime="20150720 23:04:38.954" endtime="20150720 23:04:38.955"></status>
 </kw>
-<kw type="kw" name="rf.AddressBook.Group Lists Should Be Equal">
+<kw name="rf.AddressBook.Group Lists Should Be Equal" type="kw">
 <doc></doc>
 <arguments>
 <arg>${new_list}</arg>
 <arg>${old_list}</arg>
 </arguments>
-<status status="PASS" starttime="20150720 22:38:31.225" endtime="20150720 22:38:31.226"></status>
+<status status="PASS" starttime="20150720 23:04:38.955" endtime="20150720 23:04:38.956"></status>
 </kw>
 <doc></doc>
 <tags>
 </tags>
-<status status="PASS" critical="yes" starttime="20150720 22:38:30.016" endtime="20150720 22:38:31.227"></status>
+<status status="PASS" critical="yes" starttime="20150720 23:04:37.679" endtime="20150720 23:04:38.956"></status>
 </test>
 <test name="Delete group" id="s1-t2">
-<kw type="kw" name="${old_list} = rf.AddressBook.Get Group List">
+<kw name="${old_list} = rf.AddressBook.Get Group List" type="kw">
 <doc></doc>
 <arguments>
 </arguments>
-<msg timestamp="20150720 22:38:31.236" level="INFO">${old_list} = [128:name_mod:header_mod:footer_mod, 129:name_mod:header_mod:footer_mod, 131:name,:header7:footerBjR$(eM-cF+J3Lku]Y, 132:nameD}x.S:headerTH6LY5|Bt:footer  , 134:nameT :header^g#^6f;[( /vT:footer ?, 13...</msg>
-<status status="PASS" starttime="20150720 22:38:31.229" endtime="20150720 22:38:31.235"></status>
+<msg level="INFO" timestamp="20150720 23:04:38.968">${old_list} = [128:name_mod:header_mod:footer_mod, 129:name_mod:header_mod:footer_mod, 131:name,:header7:footerBjR$(eM-cF+J3Lku]Y, 132:nameD}x.S:headerTH6LY5|Bt:footer  , 134:nameT :header^g#^6f;[( /vT:footer ?, 13...</msg>
+<status status="PASS" starttime="20150720 23:04:38.961" endtime="20150720 23:04:38.968"></status>
 </kw>
-<kw type="kw" name="${len} = BuiltIn.Get Length">
+<kw name="${len} = BuiltIn.Get Length" type="kw">
 <doc>Returns and logs the length of the given item.</doc>
 <arguments>
 <arg>${old_list}</arg>
 </arguments>
-<msg timestamp="20150720 22:38:31.237" level="INFO">Length is 74</msg>
-<msg timestamp="20150720 22:38:31.237" level="INFO">${len} = 74</msg>
-<status status="PASS" starttime="20150720 22:38:31.236" endtime="20150720 22:38:31.237"></status>
+<msg level="INFO" timestamp="20150720 23:04:38.969">Length is 74</msg>
+<msg level="INFO" timestamp="20150720 23:04:38.970">${len} = 74</msg>
+<status status="PASS" starttime="20150720 23:04:38.969" endtime="20150720 23:04:38.970"></status>
 </kw>
-<kw type="kw" name="${index} = BuiltIn.Evaluate">
+<kw name="${index} = BuiltIn.Evaluate" type="kw">
 <doc>Evaluates the given expression in Python and returns the results.</doc>
 <arguments>
 <arg>random.randrange(${len})</arg>
 <arg>random</arg>
 </arguments>
-<msg timestamp="20150720 22:38:31.238" level="INFO">${index} = 63</msg>
-<status status="PASS" starttime="20150720 22:38:31.237" endtime="20150720 22:38:31.238"></status>
+<msg level="INFO" timestamp="20150720 23:04:38.971">${index} = 48</msg>
+<status status="PASS" starttime="20150720 23:04:38.970" endtime="20150720 23:04:38.971"></status>
 </kw>
-<kw type="kw" name="${group} = Collections.Get From List">
+<kw name="${group} = Collections.Get From List" type="kw">
 <doc>Returns the value specified with an `index` from `list`.</doc>
 <arguments>
 <arg>${old_list}</arg>
 <arg>${index}</arg>
 </arguments>
-<msg timestamp="20150720 22:38:31.239" level="INFO">${group} = 206:nameT :header^g#^6f;[( /vT:footer ?</msg>
-<status status="PASS" starttime="20150720 22:38:31.238" endtime="20150720 22:38:31.239"></status>
+<msg level="INFO" timestamp="20150720 23:04:38.972">${group} = 191:name,:header7:footerBjR$(eM-cF+J3Lku]Y</msg>
+<status status="PASS" starttime="20150720 23:04:38.971" endtime="20150720 23:04:38.972"></status>
 </kw>
-<kw type="kw" name="rf.AddressBook.Delete Group">
+<kw name="rf.AddressBook.Delete Group" type="kw">
 <doc></doc>
 <arguments>
 <arg>${group}</arg>
 </arguments>
-<status status="PASS" starttime="20150720 22:38:31.240" endtime="20150720 22:38:31.695"></status>
+<status status="PASS" starttime="20150720 23:04:38.972" endtime="20150720 23:04:39.417"></status>
 </kw>
-<kw type="kw" name="${new_list} = rf.AddressBook.Get Group List">
+<kw name="${new_list} = rf.AddressBook.Get Group List" type="kw">
 <doc></doc>
 <arguments>
 </arguments>
-<msg timestamp="20150720 22:38:31.703" level="INFO">${new_list} = [128:name_mod:header_mod:footer_mod, 129:name_mod:header_mod:footer_mod, 131:name,:header7:footerBjR$(eM-cF+J3Lku]Y, 132:nameD}x.S:headerTH6LY5|Bt:footer  , 134:nameT :header^g#^6f;[( /vT:footer ?, 13...</msg>
-<status status="PASS" starttime="20150720 22:38:31.695" endtime="20150720 22:38:31.703"></status>
+<msg level="INFO" timestamp="20150720 23:04:39.425">${new_list} = [128:name_mod:header_mod:footer_mod, 129:name_mod:header_mod:footer_mod, 131:name,:header7:footerBjR$(eM-cF+J3Lku]Y, 132:nameD}x.S:headerTH6LY5|Bt:footer  , 134:nameT :header^g#^6f;[( /vT:footer ?, 13...</msg>
+<status status="PASS" starttime="20150720 23:04:39.417" endtime="20150720 23:04:39.424"></status>
 </kw>
-<kw type="kw" name="Collections.Remove Values From List">
+<kw name="Collections.Remove Values From List" type="kw">
 <doc>Removes all occurences of given `values` from `list`.</doc>
 <arguments>
 <arg>${old_list}</arg>
 <arg>${group}</arg>
 </arguments>
-<status status="PASS" starttime="20150720 22:38:31.704" endtime="20150720 22:38:31.704"></status>
+<status status="PASS" starttime="20150720 23:04:39.426" endtime="20150720 23:04:39.426"></status>
 </kw>
-<kw type="kw" name="rf.AddressBook.Group Lists Should Be Equal">
+<kw name="rf.AddressBook.Group Lists Should Be Equal" type="kw">
 <doc></doc>
 <arguments>
 <arg>${new_list}</arg>
 <arg>${old_list}</arg>
 </arguments>
-<status status="PASS" starttime="20150720 22:38:31.705" endtime="20150720 22:38:31.705"></status>
+<status status="PASS" starttime="20150720 23:04:39.427" endtime="20150720 23:04:39.428"></status>
 </kw>
 <doc></doc>
 <tags>
 </tags>
-<status status="PASS" critical="yes" starttime="20150720 22:38:31.228" endtime="20150720 22:38:31.706"></status>
+<status status="PASS" critical="yes" starttime="20150720 23:04:38.958" endtime="20150720 23:04:39.428"></status>
 </test>
-<kw type="teardown" name="rf.AddressBook.Destroy Fixtures">
+<test name="Modify group" id="s1-t3">
+<kw name="${old_list} = rf.AddressBook.Get Group List" type="kw">
 <doc></doc>
 <arguments>
 </arguments>
-<status status="PASS" starttime="20150720 22:38:31.708" endtime="20150720 22:38:32.936"></status>
+<msg level="INFO" timestamp="20150720 23:04:39.438">${old_list} = [128:name_mod:header_mod:footer_mod, 129:name_mod:header_mod:footer_mod, 131:name,:header7:footerBjR$(eM-cF+J3Lku]Y, 132:nameD}x.S:headerTH6LY5|Bt:footer  , 134:nameT :header^g#^6f;[( /vT:footer ?, 13...</msg>
+<status status="PASS" starttime="20150720 23:04:39.432" endtime="20150720 23:04:39.438"></status>
+</kw>
+<kw name="${len} = BuiltIn.Get Length" type="kw">
+<doc>Returns and logs the length of the given item.</doc>
+<arguments>
+<arg>${old_list}</arg>
+</arguments>
+<msg level="INFO" timestamp="20150720 23:04:39.439">Length is 73</msg>
+<msg level="INFO" timestamp="20150720 23:04:39.439">${len} = 73</msg>
+<status status="PASS" starttime="20150720 23:04:39.439" endtime="20150720 23:04:39.439"></status>
+</kw>
+<kw name="${index} = BuiltIn.Evaluate" type="kw">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>random.randrange(${len})</arg>
+<arg>random</arg>
+</arguments>
+<msg level="INFO" timestamp="20150720 23:04:39.440">${index} = 58</msg>
+<status status="PASS" starttime="20150720 23:04:39.440" endtime="20150720 23:04:39.440"></status>
+</kw>
+<kw name="${source_group} = Collections.Get From List" type="kw">
+<doc>Returns the value specified with an `index` from `list`.</doc>
+<arguments>
+<arg>${old_list}</arg>
+<arg>${index}</arg>
+</arguments>
+<msg level="INFO" timestamp="20150720 23:04:39.441">${source_group} = 202:::</msg>
+<status status="PASS" starttime="20150720 23:04:39.441" endtime="20150720 23:04:39.441"></status>
+</kw>
+<kw name="${new_data_group} = rf.AddressBook.New Group" type="kw">
+<doc></doc>
+<arguments>
+<arg>namemod</arg>
+<arg>headermod</arg>
+<arg>footermod</arg>
+</arguments>
+<msg level="INFO" timestamp="20150720 23:04:39.442">${new_data_group} = None:namemod:headermod:footermod</msg>
+<status status="PASS" starttime="20150720 23:04:39.441" endtime="20150720 23:04:39.442"></status>
+</kw>
+<kw name="rf.AddressBook.Modify Group" type="kw">
+<doc></doc>
+<arguments>
+<arg>${source_group}</arg>
+<arg>${new_data_group}</arg>
+</arguments>
+<status status="PASS" starttime="20150720 23:04:39.442" endtime="20150720 23:04:40.644"></status>
+</kw>
+<kw name="${new_list} = rf.AddressBook.Get Group List" type="kw">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="INFO" timestamp="20150720 23:04:40.654">${new_list} = [128:name_mod:header_mod:footer_mod, 129:name_mod:header_mod:footer_mod, 131:name,:header7:footerBjR$(eM-cF+J3Lku]Y, 132:nameD}x.S:headerTH6LY5|Bt:footer  , 134:nameT :header^g#^6f;[( /vT:footer ?, 13...</msg>
+<status status="PASS" starttime="20150720 23:04:40.646" endtime="20150720 23:04:40.654"></status>
+</kw>
+<kw name="${old_list}, ${index}, ${new_data_group} = None" type="kw">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="FAIL" timestamp="20150720 23:04:40.655">Keyword name cannot be empty.</msg>
+<status status="FAIL" starttime="20150720 23:04:40.655" endtime="20150720 23:04:40.655"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status status="FAIL" critical="yes" starttime="20150720 23:04:39.430" endtime="20150720 23:04:40.656">Keyword name cannot be empty.</status>
+</test>
+<kw name="rf.AddressBook.Destroy Fixtures" type="teardown">
+<doc></doc>
+<arguments>
+</arguments>
+<status status="PASS" starttime="20150720 23:04:40.659" endtime="20150720 23:04:41.863"></status>
 </kw>
 <doc></doc>
 <metadata>
 </metadata>
-<status status="PASS" starttime="20150720 22:38:24.873" endtime="20150720 22:38:32.937"></status>
+<status status="FAIL" starttime="20150720 23:04:32.657" endtime="20150720 23:04:41.863"></status>
 </suite>
 <statistics>
 <total>
-<stat pass="2" fail="0">Critical Tests</stat>
-<stat pass="2" fail="0">All Tests</stat>
+<stat fail="1" pass="2">Critical Tests</stat>
+<stat fail="1" pass="2">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="2" name="Group Scenarios" fail="0" id="s1">Group Scenarios</stat>
+<stat fail="1" id="s1" name="Group Scenarios" pass="2">Group Scenarios</stat>
 </suite>
 </statistics>
 <errors>
