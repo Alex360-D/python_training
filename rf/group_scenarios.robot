@@ -32,5 +32,5 @@ Modify group
     ${new_data_group}=  New Group  name_mod  header_mod  footer_mod
     Modify Group  ${source_group}  ${new_data_group}
     ${new_list}=  Get Group List
-    ${old_list}  ${index}=  ${new_data_group}
+    Set List Value  ${old_list}  ${index}  ${new_data_group}
     Group Lists Should Be Equal  ${new_list}  ${old_list}

@@ -10,7 +10,7 @@ class AddressBook:
 
     ROBOT_LIBRARY_SCOPE = 'TEST SUITE'
 
-    def __init__(self, config="target.json", browser="chrome"):
+    def __init__(self, config="target.json", browser="firefox"):
         self.browser = browser
         config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", config)
         with open(config_file) as f:
