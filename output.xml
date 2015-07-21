@@ -1,43 +1,372 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 2.8.7 (Python 3.4.3 on win32)" generated="20150721 10:01:25.875">
-<suite name="Group Scenarios" id="s1" source="C:\Devel\python_training\rf\group_scenarios.robot">
+<robot generated="20150722 00:19:45.690" generator="Robot 2.8.7 (Python 3.4.3 on win32)">
+<suite id="s1" name="Contact Scenarios &amp; Group Scenarios">
+<suite source="C:\Devel\python_training\rf\contact_scenarios.robot" id="s1-s1" name="Contact Scenarios">
 <kw type="setup" name="rf.AddressBook.Init Fixtures">
 <doc></doc>
 <arguments>
 </arguments>
-<status starttime="20150721 10:01:26.040" endtime="20150721 10:01:32.099" status="PASS"></status>
+<status endtime="20150722 00:19:56.820" starttime="20150722 00:19:46.016" status="PASS"></status>
 </kw>
-<test name="Add new group" id="s1-t1">
+<test id="s1-s1-t1" name="Add new contact">
+<kw type="kw" name="${old_list} = rf.AddressBook.Get Contact List">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="INFO" timestamp="20150722 00:19:56.825">${old_list} = []</msg>
+<status endtime="20150722 00:19:56.825" starttime="20150722 00:19:56.823" status="PASS"></status>
+</kw>
+<kw type="kw" name="${contact} = rf.AddressBook.New Contact">
+<doc></doc>
+<arguments>
+<arg>lastname-1</arg>
+<arg>firstname-1</arg>
+<arg>address-1</arg>
+<arg>home-1</arg>
+<arg>mobile-1</arg>
+<arg>work-1</arg>
+<arg>phone2-1</arg>
+<arg>email-1</arg>
+<arg>email2-1</arg>
+<arg>email3-1</arg>
+</arguments>
+<msg level="INFO" timestamp="20150722 00:19:56.827">${contact} = None:lastname-1:firstname-1:home-1:email-1</msg>
+<status endtime="20150722 00:19:56.826" starttime="20150722 00:19:56.826" status="PASS"></status>
+</kw>
+<kw type="kw" name="rf.AddressBook.Add Contact">
+<doc></doc>
+<arguments>
+<arg>${contact}</arg>
+</arguments>
+<status endtime="20150722 00:20:04.143" starttime="20150722 00:19:56.827" status="PASS"></status>
+</kw>
+<kw type="kw" name="${new_list} = rf.AddressBook.Get Contact List">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="INFO" timestamp="20150722 00:20:04.148">${new_list} = [145:lastname-1:firstname-1:home-1:email-1]</msg>
+<status endtime="20150722 00:20:04.148" starttime="20150722 00:20:04.144" status="PASS"></status>
+</kw>
+<kw type="kw" name="Collections.Append To List">
+<doc>Adds `values` to the end of `list`.</doc>
+<arguments>
+<arg>${old_list}</arg>
+<arg>${contact}</arg>
+</arguments>
+<status endtime="20150722 00:20:04.150" starttime="20150722 00:20:04.150" status="PASS"></status>
+</kw>
+<kw type="kw" name="rf.AddressBook.Contact Lists Should Be Equal">
+<doc></doc>
+<arguments>
+<arg>${new_list}</arg>
+<arg>${old_list}</arg>
+</arguments>
+<status endtime="20150722 00:20:04.151" starttime="20150722 00:20:04.151" status="PASS"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status endtime="20150722 00:20:04.153" critical="yes" starttime="20150722 00:19:56.820" status="PASS"></status>
+</test>
+<test id="s1-s1-t2" name="Delete contact">
+<kw type="kw" name="${old_list} = rf.AddressBook.Get Contact List">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="INFO" timestamp="20150722 00:20:04.159">${old_list} = [145:lastname-1:firstname-1:home-1:email-1]</msg>
+<status endtime="20150722 00:20:04.159" starttime="20150722 00:20:04.157" status="PASS"></status>
+</kw>
+<kw type="kw" name="${len} = BuiltIn.Get Length">
+<doc>Returns and logs the length of the given item.</doc>
+<arguments>
+<arg>${old_list}</arg>
+</arguments>
+<msg level="INFO" timestamp="20150722 00:20:04.160">Length is 1</msg>
+<msg level="INFO" timestamp="20150722 00:20:04.161">${len} = 1</msg>
+<status endtime="20150722 00:20:04.160" starttime="20150722 00:20:04.160" status="PASS"></status>
+</kw>
+<kw type="kw" name="${test_contact} = rf.AddressBook.New Contact">
+<doc></doc>
+<arguments>
+<arg>lastname_test</arg>
+<arg>firstname_test</arg>
+<arg>address_test</arg>
+<arg>home_test</arg>
+<arg>mobile_test</arg>
+<arg>work_test</arg>
+<arg>phone2_test</arg>
+<arg>email_test</arg>
+<arg>email2_test</arg>
+<arg>email3_test</arg>
+</arguments>
+<msg level="INFO" timestamp="20150722 00:20:04.162">${test_contact} = None:lastname_test:firstname_test:home_test:email_test</msg>
+<status endtime="20150722 00:20:04.161" starttime="20150722 00:20:04.161" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if `condition` is true.</doc>
+<arguments>
+<arg>${len}== 0</arg>
+<arg>Add Contact</arg>
+<arg>${test_contact}</arg>
+</arguments>
+<status endtime="20150722 00:20:04.163" starttime="20150722 00:20:04.162" status="PASS"></status>
+</kw>
+<kw type="kw" name="${old_list} = rf.AddressBook.Get Contact List">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="INFO" timestamp="20150722 00:20:04.165">${old_list} = [145:lastname-1:firstname-1:home-1:email-1]</msg>
+<status endtime="20150722 00:20:04.165" starttime="20150722 00:20:04.163" status="PASS"></status>
+</kw>
+<kw type="kw" name="${len} = BuiltIn.Get Length">
+<doc>Returns and logs the length of the given item.</doc>
+<arguments>
+<arg>${old_list}</arg>
+</arguments>
+<msg level="INFO" timestamp="20150722 00:20:04.166">Length is 1</msg>
+<msg level="INFO" timestamp="20150722 00:20:04.166">${len} = 1</msg>
+<status endtime="20150722 00:20:04.166" starttime="20150722 00:20:04.166" status="PASS"></status>
+</kw>
+<kw type="kw" name="${index} = BuiltIn.Evaluate">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>random.randrange(${len})</arg>
+<arg>random</arg>
+</arguments>
+<msg level="INFO" timestamp="20150722 00:20:04.168">${index} = 0</msg>
+<status endtime="20150722 00:20:04.168" starttime="20150722 00:20:04.167" status="PASS"></status>
+</kw>
+<kw type="kw" name="${contact} = Collections.Get From List">
+<doc>Returns the value specified with an `index` from `list`.</doc>
+<arguments>
+<arg>${old_list}</arg>
+<arg>${index}</arg>
+</arguments>
+<msg level="INFO" timestamp="20150722 00:20:04.169">${contact} = 145:lastname-1:firstname-1:home-1:email-1</msg>
+<status endtime="20150722 00:20:04.169" starttime="20150722 00:20:04.168" status="PASS"></status>
+</kw>
+<kw type="kw" name="rf.AddressBook.Delete Contact">
+<doc></doc>
+<arguments>
+<arg>${contact}</arg>
+</arguments>
+<status endtime="20150722 00:20:05.563" starttime="20150722 00:20:04.169" status="PASS"></status>
+</kw>
+<kw type="kw" name="${new_list} = rf.AddressBook.Get Contact List">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="INFO" timestamp="20150722 00:20:05.565">${new_list} = []</msg>
+<status endtime="20150722 00:20:05.565" starttime="20150722 00:20:05.565" status="PASS"></status>
+</kw>
+<kw type="kw" name="Collections.Remove Values From List">
+<doc>Removes all occurences of given `values` from `list`.</doc>
+<arguments>
+<arg>${old_list}</arg>
+<arg>${contact}</arg>
+</arguments>
+<status endtime="20150722 00:20:05.582" starttime="20150722 00:20:05.565" status="PASS"></status>
+</kw>
+<kw type="kw" name="rf.AddressBook.Contact Lists Should Be Equal">
+<doc></doc>
+<arguments>
+<arg>${new_list}</arg>
+<arg>${old_list}</arg>
+</arguments>
+<status endtime="20150722 00:20:05.616" starttime="20150722 00:20:05.616" status="PASS"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status endtime="20150722 00:20:05.616" critical="yes" starttime="20150722 00:20:04.155" status="PASS"></status>
+</test>
+<test id="s1-s1-t3" name="Modify contact">
+<kw type="kw" name="${old_list} = rf.AddressBook.Get Contact List">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="INFO" timestamp="20150722 00:20:05.638">${old_list} = []</msg>
+<status endtime="20150722 00:20:05.638" starttime="20150722 00:20:05.637" status="PASS"></status>
+</kw>
+<kw type="kw" name="${len} = BuiltIn.Get Length">
+<doc>Returns and logs the length of the given item.</doc>
+<arguments>
+<arg>${old_list}</arg>
+</arguments>
+<msg level="INFO" timestamp="20150722 00:20:05.641">Length is 0</msg>
+<msg level="INFO" timestamp="20150722 00:20:05.641">${len} = 0</msg>
+<status endtime="20150722 00:20:05.641" starttime="20150722 00:20:05.640" status="PASS"></status>
+</kw>
+<kw type="kw" name="${test_contact} = rf.AddressBook.New Contact">
+<doc></doc>
+<arguments>
+<arg>lastname_test</arg>
+<arg>firstname_test</arg>
+<arg>address_test</arg>
+<arg>home_test</arg>
+<arg>mobile_test</arg>
+<arg>work_test</arg>
+<arg>phone2_test</arg>
+<arg>email_test</arg>
+<arg>email2_test</arg>
+<arg>email3_test</arg>
+</arguments>
+<msg level="INFO" timestamp="20150722 00:20:05.642">${test_contact} = None:lastname_test:firstname_test:home_test:email_test</msg>
+<status endtime="20150722 00:20:05.642" starttime="20150722 00:20:05.641" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if `condition` is true.</doc>
+<arguments>
+<arg>${len}== 0</arg>
+<arg>Add Contact</arg>
+<arg>${test_contact}</arg>
+</arguments>
+<kw type="kw" name="rf.AddressBook.Add Contact">
+<doc></doc>
+<arguments>
+<arg>${test_contact}</arg>
+</arguments>
+<status endtime="20150722 00:20:12.967" starttime="20150722 00:20:05.643" status="PASS"></status>
+</kw>
+<status endtime="20150722 00:20:12.967" starttime="20150722 00:20:05.643" status="PASS"></status>
+</kw>
+<kw type="kw" name="${old_list} = rf.AddressBook.Get Contact List">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="INFO" timestamp="20150722 00:20:12.975">${old_list} = [146:lastname_test:firstname_test:home_test:email_test]</msg>
+<status endtime="20150722 00:20:12.975" starttime="20150722 00:20:12.969" status="PASS"></status>
+</kw>
+<kw type="kw" name="${len} = BuiltIn.Get Length">
+<doc>Returns and logs the length of the given item.</doc>
+<arguments>
+<arg>${old_list}</arg>
+</arguments>
+<msg level="INFO" timestamp="20150722 00:20:12.979">Length is 1</msg>
+<msg level="INFO" timestamp="20150722 00:20:12.979">${len} = 1</msg>
+<status endtime="20150722 00:20:12.979" starttime="20150722 00:20:12.979" status="PASS"></status>
+</kw>
+<kw type="kw" name="${index} = BuiltIn.Evaluate">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>random.randrange(${len})</arg>
+<arg>random</arg>
+</arguments>
+<msg level="INFO" timestamp="20150722 00:20:12.983">${index} = 0</msg>
+<status endtime="20150722 00:20:12.983" starttime="20150722 00:20:12.983" status="PASS"></status>
+</kw>
+<kw type="kw" name="${source_contact} = Collections.Get From List">
+<doc>Returns the value specified with an `index` from `list`.</doc>
+<arguments>
+<arg>${old_list}</arg>
+<arg>${index}</arg>
+</arguments>
+<msg level="INFO" timestamp="20150722 00:20:12.985">${source_contact} = 146:lastname_test:firstname_test:home_test:email_test</msg>
+<status endtime="20150722 00:20:12.985" starttime="20150722 00:20:12.984" status="PASS"></status>
+</kw>
+<kw type="kw" name="${new_data_contact} = rf.AddressBook.New Contact">
+<doc></doc>
+<arguments>
+<arg>lastname_mod</arg>
+<arg>firstname_mod</arg>
+<arg>address_mod</arg>
+<arg>home_mod</arg>
+<arg>mobile_mod</arg>
+<arg>work_mod</arg>
+<arg>phone2_mod</arg>
+<arg>email_mod</arg>
+<arg>email2_mod</arg>
+<arg>email3_mod</arg>
+</arguments>
+<msg level="INFO" timestamp="20150722 00:20:12.988">${new_data_contact} = None:lastname_mod:firstname_mod:home_mod:email_mod</msg>
+<status endtime="20150722 00:20:12.988" starttime="20150722 00:20:12.987" status="PASS"></status>
+</kw>
+<kw type="kw" name="rf.AddressBook.Modify Contact">
+<doc></doc>
+<arguments>
+<arg>${source_contact}</arg>
+<arg>${new_data_contact}</arg>
+</arguments>
+<status endtime="20150722 00:20:20.402" starttime="20150722 00:20:12.991" status="PASS"></status>
+</kw>
+<kw type="kw" name="${new_list} = rf.AddressBook.Get Contact List">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="INFO" timestamp="20150722 00:20:20.409">${new_list} = [146:lastname_mod:firstname_mod:home_mod:email_mod]</msg>
+<status endtime="20150722 00:20:20.409" starttime="20150722 00:20:20.406" status="PASS"></status>
+</kw>
+<kw type="kw" name="Collections.Set List Value">
+<doc>Sets the value of `list` specified by `index` to the given `value`.</doc>
+<arguments>
+<arg>${old_list}</arg>
+<arg>${index}</arg>
+<arg>${new_data_contact}</arg>
+</arguments>
+<status endtime="20150722 00:20:20.413" starttime="20150722 00:20:20.411" status="PASS"></status>
+</kw>
+<kw type="kw" name="rf.AddressBook.Contact Lists Should Be Equal">
+<doc></doc>
+<arguments>
+<arg>${new_list}</arg>
+<arg>${old_list}</arg>
+</arguments>
+<status endtime="20150722 00:20:20.417" starttime="20150722 00:20:20.417" status="PASS"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status endtime="20150722 00:20:20.419" critical="yes" starttime="20150722 00:20:05.635" status="PASS"></status>
+</test>
+<kw type="teardown" name="rf.AddressBook.Destroy Fixtures">
+<doc></doc>
+<arguments>
+</arguments>
+<status endtime="20150722 00:20:20.650" starttime="20150722 00:20:20.422" status="PASS"></status>
+</kw>
+<doc></doc>
+<metadata>
+</metadata>
+<status endtime="20150722 00:20:20.651" starttime="20150722 00:19:45.762" status="PASS"></status>
+</suite>
+<suite source="C:\Devel\python_training\rf\group_scenarios.robot" id="s1-s2" name="Group Scenarios">
+<kw type="setup" name="rf.AddressBook.Init Fixtures">
+<doc></doc>
+<arguments>
+</arguments>
+<status endtime="20150722 00:20:33.217" starttime="20150722 00:20:20.663" status="PASS"></status>
+</kw>
+<test id="s1-s2-t1" name="Add new group">
 <kw type="kw" name="${old_list} = rf.AddressBook.Get Group List">
 <doc></doc>
 <arguments>
 </arguments>
-<msg timestamp="20150721 10:01:32.101" level="INFO">${old_list} = [351:name_mod:header_mod:footer_mod]</msg>
-<status starttime="20150721 10:01:32.100" endtime="20150721 10:01:32.101" status="PASS"></status>
+<msg level="INFO" timestamp="20150722 00:20:33.222">${old_list} = []</msg>
+<status endtime="20150722 00:20:33.222" starttime="20150722 00:20:33.220" status="PASS"></status>
 </kw>
 <kw type="kw" name="${group} = rf.AddressBook.New Group">
 <doc></doc>
 <arguments>
-<arg>name1</arg>
-<arg>header1</arg>
-<arg>footer1</arg>
+<arg>name-1</arg>
+<arg>header-1</arg>
+<arg>footer-1</arg>
 </arguments>
-<msg timestamp="20150721 10:01:32.102" level="INFO">${group} = None:name1:header1:footer1</msg>
-<status starttime="20150721 10:01:32.101" endtime="20150721 10:01:32.102" status="PASS"></status>
+<msg level="INFO" timestamp="20150722 00:20:33.223">${group} = None:name-1:header-1:footer-1</msg>
+<status endtime="20150722 00:20:33.223" starttime="20150722 00:20:33.223" status="PASS"></status>
 </kw>
 <kw type="kw" name="rf.AddressBook.Create Group">
 <doc></doc>
 <arguments>
 <arg>${group}</arg>
 </arguments>
-<status starttime="20150721 10:01:32.102" endtime="20150721 10:01:35.204" status="PASS"></status>
+<status endtime="20150722 00:20:36.856" starttime="20150722 00:20:33.224" status="PASS"></status>
 </kw>
 <kw type="kw" name="${new_list} = rf.AddressBook.Get Group List">
 <doc></doc>
 <arguments>
 </arguments>
-<msg timestamp="20150721 10:01:35.206" level="INFO">${new_list} = [351:name_mod:header_mod:footer_mod, 352:name1:header1:footer1]</msg>
-<status starttime="20150721 10:01:35.205" endtime="20150721 10:01:35.206" status="PASS"></status>
+<msg level="INFO" timestamp="20150722 00:20:36.860">${new_list} = [228:name-1:header-1:footer-1]</msg>
+<status endtime="20150722 00:20:36.860" starttime="20150722 00:20:36.858" status="PASS"></status>
 </kw>
 <kw type="kw" name="Collections.Append To List">
 <doc>Adds `values` to the end of `list`.</doc>
@@ -45,7 +374,7 @@
 <arg>${old_list}</arg>
 <arg>${group}</arg>
 </arguments>
-<status starttime="20150721 10:01:35.208" endtime="20150721 10:01:35.209" status="PASS"></status>
+<status endtime="20150722 00:20:36.862" starttime="20150722 00:20:36.861" status="PASS"></status>
 </kw>
 <kw type="kw" name="rf.AddressBook.Group Lists Should Be Equal">
 <doc></doc>
@@ -53,29 +382,64 @@
 <arg>${new_list}</arg>
 <arg>${old_list}</arg>
 </arguments>
-<status starttime="20150721 10:01:35.209" endtime="20150721 10:01:35.210" status="PASS"></status>
+<status endtime="20150722 00:20:36.863" starttime="20150722 00:20:36.862" status="PASS"></status>
 </kw>
 <doc></doc>
 <tags>
 </tags>
-<status starttime="20150721 10:01:32.099" endtime="20150721 10:01:35.210" critical="yes" status="PASS"></status>
+<status endtime="20150722 00:20:36.863" critical="yes" starttime="20150722 00:20:33.218" status="PASS"></status>
 </test>
-<test name="Delete group" id="s1-t2">
+<test id="s1-s2-t2" name="Delete group">
 <kw type="kw" name="${old_list} = rf.AddressBook.Get Group List">
 <doc></doc>
 <arguments>
 </arguments>
-<msg timestamp="20150721 10:01:35.218" level="INFO">${old_list} = [351:name_mod:header_mod:footer_mod, 352:name1:header1:footer1]</msg>
-<status starttime="20150721 10:01:35.213" endtime="20150721 10:01:35.218" status="PASS"></status>
+<msg level="INFO" timestamp="20150722 00:20:36.868">${old_list} = [228:name-1:header-1:footer-1]</msg>
+<status endtime="20150722 00:20:36.868" starttime="20150722 00:20:36.866" status="PASS"></status>
 </kw>
 <kw type="kw" name="${len} = BuiltIn.Get Length">
 <doc>Returns and logs the length of the given item.</doc>
 <arguments>
 <arg>${old_list}</arg>
 </arguments>
-<msg timestamp="20150721 10:01:35.219" level="INFO">Length is 2</msg>
-<msg timestamp="20150721 10:01:35.219" level="INFO">${len} = 2</msg>
-<status starttime="20150721 10:01:35.219" endtime="20150721 10:01:35.219" status="PASS"></status>
+<msg level="INFO" timestamp="20150722 00:20:36.869">Length is 1</msg>
+<msg level="INFO" timestamp="20150722 00:20:36.870">${len} = 1</msg>
+<status endtime="20150722 00:20:36.869" starttime="20150722 00:20:36.869" status="PASS"></status>
+</kw>
+<kw type="kw" name="${test_group} = rf.AddressBook.New Group">
+<doc></doc>
+<arguments>
+<arg>name_test</arg>
+<arg>header_test</arg>
+<arg>footer_test</arg>
+</arguments>
+<msg level="INFO" timestamp="20150722 00:20:36.871">${test_group} = None:name_test:header_test:footer_test</msg>
+<status endtime="20150722 00:20:36.870" starttime="20150722 00:20:36.870" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if `condition` is true.</doc>
+<arguments>
+<arg>${len}== 0</arg>
+<arg>Create Group</arg>
+<arg>${test_group}</arg>
+</arguments>
+<status endtime="20150722 00:20:36.872" starttime="20150722 00:20:36.871" status="PASS"></status>
+</kw>
+<kw type="kw" name="${old_list} = rf.AddressBook.Get Group List">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="INFO" timestamp="20150722 00:20:36.876">${old_list} = [228:name-1:header-1:footer-1]</msg>
+<status endtime="20150722 00:20:36.876" starttime="20150722 00:20:36.872" status="PASS"></status>
+</kw>
+<kw type="kw" name="${len} = BuiltIn.Get Length">
+<doc>Returns and logs the length of the given item.</doc>
+<arguments>
+<arg>${old_list}</arg>
+</arguments>
+<msg level="INFO" timestamp="20150722 00:20:36.878">Length is 1</msg>
+<msg level="INFO" timestamp="20150722 00:20:36.878">${len} = 1</msg>
+<status endtime="20150722 00:20:36.878" starttime="20150722 00:20:36.877" status="PASS"></status>
 </kw>
 <kw type="kw" name="${index} = BuiltIn.Evaluate">
 <doc>Evaluates the given expression in Python and returns the results.</doc>
@@ -83,8 +447,8 @@
 <arg>random.randrange(${len})</arg>
 <arg>random</arg>
 </arguments>
-<msg timestamp="20150721 10:01:35.222" level="INFO">${index} = 1</msg>
-<status starttime="20150721 10:01:35.220" endtime="20150721 10:01:35.221" status="PASS"></status>
+<msg level="INFO" timestamp="20150722 00:20:36.879">${index} = 0</msg>
+<status endtime="20150722 00:20:36.879" starttime="20150722 00:20:36.878" status="PASS"></status>
 </kw>
 <kw type="kw" name="${group} = Collections.Get From List">
 <doc>Returns the value specified with an `index` from `list`.</doc>
@@ -92,22 +456,22 @@
 <arg>${old_list}</arg>
 <arg>${index}</arg>
 </arguments>
-<msg timestamp="20150721 10:01:35.223" level="INFO">${group} = 352:name1:header1:footer1</msg>
-<status starttime="20150721 10:01:35.222" endtime="20150721 10:01:35.223" status="PASS"></status>
+<msg level="INFO" timestamp="20150722 00:20:36.880">${group} = 228:name-1:header-1:footer-1</msg>
+<status endtime="20150722 00:20:36.880" starttime="20150722 00:20:36.879" status="PASS"></status>
 </kw>
 <kw type="kw" name="rf.AddressBook.Delete Group">
 <doc></doc>
 <arguments>
 <arg>${group}</arg>
 </arguments>
-<status starttime="20150721 10:01:35.223" endtime="20150721 10:01:36.236" status="PASS"></status>
+<status endtime="20150722 00:20:37.922" starttime="20150722 00:20:36.881" status="PASS"></status>
 </kw>
 <kw type="kw" name="${new_list} = rf.AddressBook.Get Group List">
 <doc></doc>
 <arguments>
 </arguments>
-<msg timestamp="20150721 10:01:36.238" level="INFO">${new_list} = [351:name_mod:header_mod:footer_mod]</msg>
-<status starttime="20150721 10:01:36.237" endtime="20150721 10:01:36.238" status="PASS"></status>
+<msg level="INFO" timestamp="20150722 00:20:37.930">${new_list} = []</msg>
+<status endtime="20150722 00:20:37.930" starttime="20150722 00:20:37.925" status="PASS"></status>
 </kw>
 <kw type="kw" name="Collections.Remove Values From List">
 <doc>Removes all occurences of given `values` from `list`.</doc>
@@ -115,7 +479,7 @@
 <arg>${old_list}</arg>
 <arg>${group}</arg>
 </arguments>
-<status starttime="20150721 10:01:36.239" endtime="20150721 10:01:36.239" status="PASS"></status>
+<status endtime="20150722 00:20:37.932" starttime="20150722 00:20:37.932" status="PASS"></status>
 </kw>
 <kw type="kw" name="rf.AddressBook.Group Lists Should Be Equal">
 <doc></doc>
@@ -123,29 +487,71 @@
 <arg>${new_list}</arg>
 <arg>${old_list}</arg>
 </arguments>
-<status starttime="20150721 10:01:36.239" endtime="20150721 10:01:36.239" status="PASS"></status>
+<status endtime="20150722 00:20:37.936" starttime="20150722 00:20:37.935" status="PASS"></status>
 </kw>
 <doc></doc>
 <tags>
 </tags>
-<status starttime="20150721 10:01:35.211" endtime="20150721 10:01:36.240" critical="yes" status="PASS"></status>
+<status endtime="20150722 00:20:37.939" critical="yes" starttime="20150722 00:20:36.864" status="PASS"></status>
 </test>
-<test name="Modify group" id="s1-t3">
+<test id="s1-s2-t3" name="Modify group">
 <kw type="kw" name="${old_list} = rf.AddressBook.Get Group List">
 <doc></doc>
 <arguments>
 </arguments>
-<msg timestamp="20150721 10:01:36.242" level="INFO">${old_list} = [351:name_mod:header_mod:footer_mod]</msg>
-<status starttime="20150721 10:01:36.241" endtime="20150721 10:01:36.242" status="PASS"></status>
+<msg level="INFO" timestamp="20150722 00:20:37.951">${old_list} = []</msg>
+<status endtime="20150722 00:20:37.951" starttime="20150722 00:20:37.948" status="PASS"></status>
 </kw>
 <kw type="kw" name="${len} = BuiltIn.Get Length">
 <doc>Returns and logs the length of the given item.</doc>
 <arguments>
 <arg>${old_list}</arg>
 </arguments>
-<msg timestamp="20150721 10:01:36.243" level="INFO">Length is 1</msg>
-<msg timestamp="20150721 10:01:36.243" level="INFO">${len} = 1</msg>
-<status starttime="20150721 10:01:36.242" endtime="20150721 10:01:36.243" status="PASS"></status>
+<msg level="INFO" timestamp="20150722 00:20:37.953">Length is 0</msg>
+<msg level="INFO" timestamp="20150722 00:20:37.953">${len} = 0</msg>
+<status endtime="20150722 00:20:37.953" starttime="20150722 00:20:37.952" status="PASS"></status>
+</kw>
+<kw type="kw" name="${test_group} = rf.AddressBook.New Group">
+<doc></doc>
+<arguments>
+<arg>name_test</arg>
+<arg>header_test</arg>
+<arg>footer_test</arg>
+</arguments>
+<msg level="INFO" timestamp="20150722 00:20:37.955">${test_group} = None:name_test:header_test:footer_test</msg>
+<status endtime="20150722 00:20:37.955" starttime="20150722 00:20:37.954" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if `condition` is true.</doc>
+<arguments>
+<arg>${len}== 0</arg>
+<arg>Create Group</arg>
+<arg>${test_group}</arg>
+</arguments>
+<kw type="kw" name="rf.AddressBook.Create Group">
+<doc></doc>
+<arguments>
+<arg>${test_group}</arg>
+</arguments>
+<status endtime="20150722 00:20:41.094" starttime="20150722 00:20:37.956" status="PASS"></status>
+</kw>
+<status endtime="20150722 00:20:41.094" starttime="20150722 00:20:37.955" status="PASS"></status>
+</kw>
+<kw type="kw" name="${old_list} = rf.AddressBook.Get Group List">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="INFO" timestamp="20150722 00:20:41.098">${old_list} = [229:name_test:header_test:footer_test]</msg>
+<status endtime="20150722 00:20:41.098" starttime="20150722 00:20:41.096" status="PASS"></status>
+</kw>
+<kw type="kw" name="${len} = BuiltIn.Get Length">
+<doc>Returns and logs the length of the given item.</doc>
+<arguments>
+<arg>${old_list}</arg>
+</arguments>
+<msg level="INFO" timestamp="20150722 00:20:41.100">Length is 1</msg>
+<msg level="INFO" timestamp="20150722 00:20:41.100">${len} = 1</msg>
+<status endtime="20150722 00:20:41.100" starttime="20150722 00:20:41.099" status="PASS"></status>
 </kw>
 <kw type="kw" name="${index} = BuiltIn.Evaluate">
 <doc>Evaluates the given expression in Python and returns the results.</doc>
@@ -153,8 +559,8 @@
 <arg>random.randrange(${len})</arg>
 <arg>random</arg>
 </arguments>
-<msg timestamp="20150721 10:01:36.243" level="INFO">${index} = 0</msg>
-<status starttime="20150721 10:01:36.243" endtime="20150721 10:01:36.243" status="PASS"></status>
+<msg level="INFO" timestamp="20150722 00:20:41.102">${index} = 0</msg>
+<status endtime="20150722 00:20:41.102" starttime="20150722 00:20:41.101" status="PASS"></status>
 </kw>
 <kw type="kw" name="${source_group} = Collections.Get From List">
 <doc>Returns the value specified with an `index` from `list`.</doc>
@@ -162,8 +568,8 @@
 <arg>${old_list}</arg>
 <arg>${index}</arg>
 </arguments>
-<msg timestamp="20150721 10:01:36.244" level="INFO">${source_group} = 351:name_mod:header_mod:footer_mod</msg>
-<status starttime="20150721 10:01:36.243" endtime="20150721 10:01:36.244" status="PASS"></status>
+<msg level="INFO" timestamp="20150722 00:20:41.119">${source_group} = 229:name_test:header_test:footer_test</msg>
+<status endtime="20150722 00:20:41.104" starttime="20150722 00:20:41.104" status="PASS"></status>
 </kw>
 <kw type="kw" name="${new_data_group} = rf.AddressBook.New Group">
 <doc></doc>
@@ -172,8 +578,8 @@
 <arg>header_mod</arg>
 <arg>footer_mod</arg>
 </arguments>
-<msg timestamp="20150721 10:01:36.244" level="INFO">${new_data_group} = None:name_mod:header_mod:footer_mod</msg>
-<status starttime="20150721 10:01:36.244" endtime="20150721 10:01:36.244" status="PASS"></status>
+<msg level="INFO" timestamp="20150722 00:20:41.125">${new_data_group} = None:name_mod:header_mod:footer_mod</msg>
+<status endtime="20150722 00:20:41.124" starttime="20150722 00:20:41.124" status="PASS"></status>
 </kw>
 <kw type="kw" name="rf.AddressBook.Modify Group">
 <doc></doc>
@@ -181,14 +587,14 @@
 <arg>${source_group}</arg>
 <arg>${new_data_group}</arg>
 </arguments>
-<status starttime="20150721 10:01:36.245" endtime="20150721 10:01:38.867" status="PASS"></status>
+<status endtime="20150722 00:20:44.406" starttime="20150722 00:20:41.127" status="PASS"></status>
 </kw>
 <kw type="kw" name="${new_list} = rf.AddressBook.Get Group List">
 <doc></doc>
 <arguments>
 </arguments>
-<msg timestamp="20150721 10:01:38.869" level="INFO">${new_list} = [351:name_mod:header_mod:footer_mod]</msg>
-<status starttime="20150721 10:01:38.868" endtime="20150721 10:01:38.869" status="PASS"></status>
+<msg level="INFO" timestamp="20150722 00:20:44.410">${new_list} = [229:name_mod:header_mod:footer_mod]</msg>
+<status endtime="20150722 00:20:44.409" starttime="20150722 00:20:44.407" status="PASS"></status>
 </kw>
 <kw type="kw" name="Collections.Set List Value">
 <doc>Sets the value of `list` specified by `index` to the given `value`.</doc>
@@ -197,7 +603,7 @@
 <arg>${index}</arg>
 <arg>${new_data_group}</arg>
 </arguments>
-<status starttime="20150721 10:01:38.869" endtime="20150721 10:01:38.869" status="PASS"></status>
+<status endtime="20150722 00:20:44.412" starttime="20150722 00:20:44.412" status="PASS"></status>
 </kw>
 <kw type="kw" name="rf.AddressBook.Group Lists Should Be Equal">
 <doc></doc>
@@ -205,33 +611,40 @@
 <arg>${new_list}</arg>
 <arg>${old_list}</arg>
 </arguments>
-<status starttime="20150721 10:01:38.870" endtime="20150721 10:01:38.870" status="PASS"></status>
+<status endtime="20150722 00:20:44.414" starttime="20150722 00:20:44.414" status="PASS"></status>
 </kw>
 <doc></doc>
 <tags>
 </tags>
-<status starttime="20150721 10:01:36.240" endtime="20150721 10:01:38.871" critical="yes" status="PASS"></status>
+<status endtime="20150722 00:20:44.417" critical="yes" starttime="20150722 00:20:37.945" status="PASS"></status>
 </test>
 <kw type="teardown" name="rf.AddressBook.Destroy Fixtures">
 <doc></doc>
 <arguments>
 </arguments>
-<status starttime="20150721 10:01:38.872" endtime="20150721 10:01:38.985" status="PASS"></status>
+<status endtime="20150722 00:20:44.777" starttime="20150722 00:20:44.420" status="PASS"></status>
 </kw>
 <doc></doc>
 <metadata>
 </metadata>
-<status starttime="20150721 10:01:25.876" endtime="20150721 10:01:38.985" status="PASS"></status>
+<status endtime="20150722 00:20:44.777" starttime="20150722 00:20:20.655" status="PASS"></status>
+</suite>
+<doc></doc>
+<metadata>
+</metadata>
+<status endtime="20150722 00:20:44.781" starttime="20150722 00:19:45.691" status="PASS"></status>
 </suite>
 <statistics>
 <total>
-<stat pass="3" fail="0">Critical Tests</stat>
-<stat pass="3" fail="0">All Tests</stat>
+<stat pass="6" fail="0">Critical Tests</stat>
+<stat pass="6" fail="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="3" id="s1" fail="0" name="Group Scenarios">Group Scenarios</stat>
+<stat fail="0" pass="6" name="Contact Scenarios &amp; Group Scenarios" id="s1">Contact Scenarios &amp; Group Scenarios</stat>
+<stat fail="0" pass="3" name="Contact Scenarios" id="s1-s1">Contact Scenarios &amp; Group Scenarios.Contact Scenarios</stat>
+<stat fail="0" pass="3" name="Group Scenarios" id="s1-s2">Contact Scenarios &amp; Group Scenarios.Group Scenarios</stat>
 </suite>
 </statistics>
 <errors>

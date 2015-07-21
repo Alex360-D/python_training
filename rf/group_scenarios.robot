@@ -8,13 +8,17 @@ Suite Teardown  Destroy Fixtures
 *** Test Cases ***
 Add new group
     ${old_list}=  Get Group List
-    ${group}=  New Group  name1  header1  footer1
+    ${group}=  New Group  name-1  header-1  footer-1
     Create Group  ${group}
     ${new_list}=  Get Group List
     Append To List  ${old_list}  ${group}
     Group Lists Should Be Equal  ${new_list}  ${old_list}
 
 Delete group
+    ${old_list}=  Get Group List
+    ${len}=  Get Length  ${old_list}
+    ${test_group}=  New Group  name_test  header_test  footer_test
+    Run Keyword If  ${len}== 0  Create Group  ${test_group}
     ${old_list}=  Get Group List
     ${len}=  Get Length  ${old_list}
     ${index}=  Evaluate  random.randrange(${len})  random
@@ -25,6 +29,10 @@ Delete group
     Group Lists Should Be Equal  ${new_list}  ${old_list}
 
 Modify group
+    ${old_list}=  Get Group List
+    ${len}=  Get Length  ${old_list}
+    ${test_group}=  New Group  name_test  header_test  footer_test
+    Run Keyword If  ${len}== 0  Create Group  ${test_group}
     ${old_list}=  Get Group List
     ${len}=  Get Length  ${old_list}
     ${index}=  Evaluate  random.randrange(${len})  random
